@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#172554">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SmartPen">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>SmartPen – Quaderno tecnico</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">✎</span><div><strong>SmartPen</strong><small>Quaderno tecnico</small></div></div>
+    <div class="page-controls">
+      <button id="prevPage" aria-label="Pagina precedente">‹</button>
+      <span id="pageLabel">Pagina 1</span>
+      <button id="nextPage" aria-label="Pagina successiva">›</button>
+    </div>
+    <button id="saveBtn" class="primary">Salva</button>
+  </header>
+
+  <main>
+    <section class="toolbar" aria-label="Strumenti">
+      <div class="toolgroup">
+        <button class="tool active" data-tool="pen" title="Penna">✎<small>Penna</small></button>
+        <button class="tool" data-tool="eraser" title="Gomma">⌫<small>Gomma</small></button>
+        <button class="tool" data-tool="line" title="Linea">／<small>Linea</small></button>
+        <button class="tool" data-tool="pan" title="Sposta pagina">✋<small>Sposta</small></button>
+      </div>
+      <div class="settings">
+        <label>Colore <input id="color" type="color" value="#172554"></label>
+        <label>Spessore <input id="width" type="range" min="1" max="12" value="3"></label>
+        <label>Foglio
+          <select id="paper">
+            <option value="grid">Quadretti</option>
+            <option value="lined">Righe</option>
+            <option value="plain">Bianco</option>
+            <option value="isometric">Isometrico</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="paper-wrap" id="paperWrap">
+        <canvas id="paperCanvas"></canvas>
+        <div id="hint" class="hint">Se la penna lascia tratti, prova a ridurre la soglia del filtro mano nelle impostazioni.</div>
+      </div>
+    </section>
+
+    <section class="bottom-tools">
+      <div class="filter">
+        <label class="switchline"><input type="checkbox" id="palmFilter" checked> <span>Filtro mano sperimentale</span></label>
+        <label class="threshold">Soglia contatto <input id="threshold" type="range" min="2" max="18" value="8"></label>
+        <span class="note" id="filterStatus">Filtro attivo · compatibilità variabile</span>
+      </div>
+      <div class="actions">
+        <button id="undoBtn">↶ Annulla</button>
+        <button id="clearBtn">Svuota</button>
+        <button id="pdfBtn" class="primary">Esporta PDF</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="messageDialog">
+    <form method="dialog"><p id="messageText"></p><button class="primary">OK</button></form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
