@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#f7f8fa">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+<title>SmartPen</title>
+</head>
+<body>
+<header>
+  <div class="brand">SmartPen <small>Quaderno tecnico</small></div>
+  <div class="actions">
+    <button id="undo" title="Annulla">↶</button>
+    <button id="clear" title="Pulisci pagina">Pulisci</button>
+    <button id="newPage" title="Nuova pagina">＋ Pagina</button>
+    <button id="export" title="Esporta PDF">PDF</button>
+  </div>
+</header>
+<nav class="toolbar">
+  <button data-tool="pen" class="tool active">✎ Penna</button>
+  <button data-tool="eraser" class="tool">⌫ Gomma</button>
+  <label>Colore <input id="color" type="color" value="#202124"></label>
+  <label>Spessore <input id="size" type="range" min="1" max="12" value="3"></label>
+  <label>Foglio
+    <select id="paper">
+      <option value="grid">Quadretti</option>
+      <option value="lined">Righe</option>
+      <option value="plain">Bianco</option>
+      <option value="isometric">Isometrico</option>
+    </select>
+  </label>
+  <label class="filter"><input id="palm" type="checkbox"> Filtro tocchi grandi (sperimentale)</label>
+</nav>
+<main id="stage">
+  <div id="paperSheet" aria-label="Foglio di scrittura">
+    <canvas id="ink"></canvas>
+  </div>
+</main>
+<footer><span id="pageLabel">Pagina 1</span><span>SmartPen salva automaticamente su questo dispositivo</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
